@@ -67,7 +67,7 @@ function pave.CoreOnLoad(frame)
 	frame:RegisterEvent("GROUP_ROSTER_UPDATE");
 	frame:RegisterEvent("UPDATE_BATTLEFIELD_STATUS");
 	--frame:RegisterEvent("PVPQUEUE_ANYWHERE_UPDATE_AVAILABLE");		-- doesn't seem to ever trigger in game?
-	frame:RegisterEvent("PVPQUEUE_ANYWHERE_SHOW");
+	-- frame:RegisterEvent("PVPQUEUE_ANYWHERE_SHOW");
 	frame:RegisterEvent("UNIT_NAME_UPDATE");
 	frame:RegisterEvent("PLAYER_ENTERING_WORLD");
 	frame:RegisterEvent("PARTY_INVITE_REQUEST");
@@ -153,7 +153,7 @@ function pave.ShowEntryPopup(bg)
 
 	local _, _, qid = pave.BGStatus(bg);
 
-	PlaySound("ReadyCheck");
+	-- PlaySound("ReadyCheck");
 
 	StaticPopup_Show("PREFORM_CONFIRM_BATTLEFIELD_ENTRY", pave.BG_NAME[bg], "", qid);
 end
@@ -164,7 +164,7 @@ function pave.ShowLeavePopup(bg)
 	
 	pave.HidePopup(qid);
 	
-	PlaySound("LFG_Denied");
+	-- PlaySound("LFG_Denied");
 
 	StaticPopup_Show("PREFORM_LEAVE_CONFIRM", pave.BG_NAME[bg], "", qid);
 end
@@ -257,11 +257,10 @@ function pave.SetMemberStatus(index, unit, name, realm)
 			index = index,
 			realm = realm or "",
 			-- no idea why you removed the spaces in the realm list
-			battlegroup = pave.BATTLEGROUP[realm:gsub(" ","")] or UNKNOWN,
 			version = -1,
 			online = UnitIsConnected(unit),
 			offlineTime = 0,
-			role = UnitGroupRolesAssigned(unit),
+			-- role = UnitGroupRolesAssigned(unit),
 			class = class or UNKNOWN,
 			--spec = "",
 			avgiLevel = "?",
@@ -278,7 +277,7 @@ function pave.SetMemberStatus(index, unit, name, realm)
 		local status = pave.memberStatus[name];
 		
 		status.index = index;
-		status.role = UnitGroupRolesAssigned(unit);
+		-- status.role = UnitGroupRolesAssigned(unit);
 		status.lastUpdate = GetTime();
 		status.online = UnitIsConnected(unit);
 		if ( status.online ) then
@@ -733,7 +732,7 @@ end
 
 function pave.events.PLAYER_ENTERING_WORLD()
 
-	RegisterAddonMessagePrefix("PreformAVEnabler");
+	C_ChatInfo.RegisterAddonMessagePrefix("PreformAVEnabler");
 
 	pave.SetPlayerQueueStatus();
 	pave.Update();

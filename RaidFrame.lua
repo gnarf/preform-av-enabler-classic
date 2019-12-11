@@ -39,7 +39,7 @@ local frameWidth = columnWidth * (pave.NUM_BGS + 1) + 155;
 function pave.Frame_OnLoad(self)
 
 	pave.SetWidgets();
-	QueueStatusMinimapButton:HookScript("OnClick", pave.MiniMapButton);
+	-- QueueStatusMinimapButton:HookScript("OnClick", pave.MiniMapButton);
 
 	-- set column headers
 	for i = 1, pave.NUM_BGS do
@@ -411,7 +411,7 @@ function PreformAVEnablerAutomateCheckButton_OnClick(self)
 		pave.automating = false;
 		pave.automateBG = 0;
 	end
-	PlaySound("igMainMenuOptionCheckBoxOn");
+	-- PlaySound("igMainMenuOptionCheckBoxOn");
 end
 
 -- called once per frame
@@ -666,7 +666,7 @@ function PreformAVEnablerButtonize_OnClick(self)
 
 				-- can't create buttons in combat
 				self:SetChecked(nil);
-				PlaySoundFile("sound\\interface\\Error.wav");
+				-- PlaySoundFile("sound\\interface\\Error.wav");
 				UIErrorsFrame:AddMessage( ERR_NOT_IN_COMBAT, 1.0, 0.1, 0.1, 1.0 );
 				return
 
@@ -687,7 +687,7 @@ end
 
 function pave.IfSecure()
 	if ( PreformAVEnablerMember1Button and InCombatLockdown() ) then
-		PlaySoundFile("sound\\interface\\Error.wav");
+		-- PlaySoundFile("sound\\interface\\Error.wav");
 		UIErrorsFrame:AddMessage( ERR_NOT_IN_COMBAT, 1.0, 0.1, 0.1, 1.0 );
 		return true;
 	end
@@ -709,8 +709,8 @@ function pave.MemberTemplateOnEnter(frame, frameID)
 		GREEN_FONT_COLOR_CODE..name..
 		"|r\nClass: "..HIGHLIGHT_FONT_COLOR_CODE..(LOCALIZED_CLASS_NAMES_MALE[status.class] or status.class)..
 		"|r\nRealm: "..HIGHLIGHT_FONT_COLOR_CODE..status.realm..
-		"|r\nBattlegroup: "..HIGHLIGHT_FONT_COLOR_CODE..status.battlegroup..
-		"|r\nRole: "..HIGHLIGHT_FONT_COLOR_CODE..(_G[status.role] or status.role)..
+		-- "|r\nBattlegroup: "..HIGHLIGHT_FONT_COLOR_CODE..status.battlegroup..
+		-- "|r\nRole: "..HIGHLIGHT_FONT_COLOR_CODE..(_G[status.role] or status.role)..
 		"|r\nResilience: "..HIGHLIGHT_FONT_COLOR_CODE..status.resilience..
 		"|r\nAvg iLevel: "..HIGHLIGHT_FONT_COLOR_CODE..status.avgiLevel..
 		"|r\nRating: "..HIGHLIGHT_FONT_COLOR_CODE..status.rating..
@@ -737,7 +737,7 @@ function PreformAVEnablerHideButton_OnClick(button, id)
 	end
 	if ( not id ) then
 		id = button:GetID();
-		PlaySound("igCharacterInfoTab");
+		-- PlaySound("igCharacterInfoTab");
 	end
 
 	if ( pave.config.hideColumn[id] ) then
@@ -806,7 +806,7 @@ function pave.InfoHideButton_OnClick(button)
 	if ( pave.IfSecure() ) then
 		return
 	end
-	PlaySound("igCharacterInfoTab");
+	-- PlaySound("igCharacterInfoTab");
 
 	if ( pave.config.hideInfoColumn ) then
 		pave.ShowInfoColumn();

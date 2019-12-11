@@ -174,7 +174,9 @@ pave.opCodes = {
 	},
 	["r"] = {
 		output = function()
-			return "r"..GetCombatRating(16)..","..GetPersonalRatedBGInfo()..","..floor(GetAverageItemLevel());
+			return "r"..GetCombatRating(16)..","..
+			-- GetPersonalRatedBGInfo()..
+			-- ","..floor(GetAverageItemLevel());
 		end,
 		input = function(sender, data)
 			local args = {};
@@ -375,9 +377,9 @@ function pave.SendOpCode(msg)
 	end
 
 	if ( pave.isInRaid ) then
-		SendAddonMessage("PreformAVEnabler", msg, "RAID");
+		C_ChatInfo.SendAddonMessage("PreformAVEnabler", msg, "RAID");
 	else
-		SendAddonMessage("PreformAVEnabler", msg, "PARTY");
+		C_ChatInfo.SendAddonMessage("PreformAVEnabler", msg, "PARTY");
 	end
 end
 

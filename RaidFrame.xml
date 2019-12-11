@@ -1175,9 +1175,6 @@
 
 				PreformAVEnabler.Update();
 			</OnShow>
-			<OnHide>
-				PlaySound("igMainMenuQuit");
-			</OnHide>
 			<OnUpdate>
 				PreformAVEnablerFrame_OnUpdate(self, elapsed);
 			</OnUpdate>
